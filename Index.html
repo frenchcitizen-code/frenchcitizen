@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MCQ Quiz</title>
+  <style>
+    body { font-family: Arial; padding: 20px; background: #f4f4f4; }
+    h1 { color: #333; }
+    .question { margin-bottom: 20px; }
+    .result { font-weight: bold; margin-top: 20px; }
+    button { padding: 10px 20px; }
+  </style>
+</head>
+<body>
+
+<h1>Quick MCQ Quiz</h1>
+
+<form id="quizForm">
+  <div class="question">
+    <p>1. What is the capital of France?</p>
+    <input type="radio" name="q1" value="a"> Berlin<br>
+    <input type="radio" name="q1" value="b"> Madrid<br>
+    <input type="radio" name="q1" value="c"> Paris<br>
+  </div>
+  
+  <div class="question">
+    <p>2. 2 + 2 = ?</p>
+    <input type="radio" name="q2" value="a"> 3<br>
+    <input type="radio" name="q2" value="b"> 4<br>
+    <input type="radio" name="q2" value="c"> 5<br>
+  </div>
+
+  <!-- Repeat similarly for 8 more questions -->
+
+  <button type="button" onclick="checkAnswers()">Submit</button>
+</form>
+
+<div class="result" id="result"></div>
+
+<script>
+  function checkAnswers() {
+    let score = 0;
+    const answers = {
+      q1: 'c',
+      q2: 'b'
+      // Add correct answers for q3 to q10
+    };
+    for (let q in answers) {
+      const selected = document.querySelector(`input[name="${q}"]:checked`);
+      if (selected && selected.value === answers[q]) score++;
+    }
+    document.getElementById('result').textContent = `You scored ${score} out of ${Object.keys(answers).length}`;
+  }
+</script>
+
+</body>
+</html>
